@@ -1,3 +1,5 @@
+package com.wavenger.mapdbtest;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,8 +33,10 @@ public class Main {
             map.put(UUID.randomUUID().toString(), new Pojo(UUID.randomUUID().toString(), UUID.randomUUID().toString()));
         }
         long end = System.currentTimeMillis();
-        String report = "Took: " + (end - start) + " with useTransactions: " + useTransactions + " and " + useExpire;
+        String report = "Took: " + (end - start) + " with useTransactions: " + useTransactions + " and useExpire: " + useExpire;
         System.out.println(report);
+        db.commit();
+        db.close();
     }
 
     public static void main(String[] args) {
